@@ -1,3 +1,4 @@
+import sys
 from stats import get_num_words, get_num_caract, sort_dict
 
 
@@ -19,7 +20,11 @@ def print_report(file, count_word, list_caract):
     
 
 def main():
-    path_file = "books/frankenstein.txt"
+    if len(sys.argv) != 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+
+    path_file = sys.argv[1]
     str_file = get_book_text(path_file)
     num_words = get_num_words(str_file)
     num_caract = get_num_caract(str_file)
